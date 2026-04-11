@@ -1,0 +1,21 @@
+[project]
+name = "comfyui-api-toolkit"
+version = "1.0.0"
+description = "Kling AI, ElevenLabs, and Google Gemini nodes for ComfyUI"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = []
+
+[project.optional-dependencies]
+kling = ["requests", "PyJWT"]
+elevenlabs = ["requests", "soundfile", "scipy"]
+gemini = ["google-genai>=0.8.0"]
+all = ["requests", "PyJWT", "soundfile", "scipy", "google-genai>=0.8.0"]
+
+[project.urls]
+Repository = "https://github.com/IxMxAMAR/ComfyUI-API-Toolkit"
+
+[tool.comfy]
+PublisherId = "IxMxAMAR"
+DisplayName = "ComfyUI API Toolkit"
+Icon = ""

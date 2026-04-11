@@ -1,0 +1,10 @@
+# Kling AI
+requests
+PyJWT
+
+# ElevenLabs
+soundfile
+scipy
+
+# Gemini
+google-genai>=0.8.0
