@@ -1,20 +1,21 @@
 # ComfyUI API Toolkit
 
-Three AI services. Sixty nodes. One install. Zero excuses.
+Four AI services. Sixty-eight nodes. One install. Zero excuses.
 
-ComfyUI API Toolkit bundles Kling AI, ElevenLabs, and Google Gemini into a single custom node pack so you can stop juggling half a dozen plugins and actually make things. Each service lives in its own plugin module, so if you don't have a particular SDK installed, that service quietly sits out instead of torching your entire ComfyUI startup. The rest keeps working. You're welcome.
+ComfyUI API Toolkit bundles Kling AI, ElevenLabs, Google Gemini, and a Utils collection into a single custom node pack so you can stop juggling half a dozen plugins and actually make things. Each service lives in its own module discovered automatically from the filesystem -- add a folder under `services/` and it just works. If you don't have a particular SDK installed, that service quietly sits out instead of torching your entire ComfyUI startup. The rest keeps working. You're welcome.
 
 ---
 
 ## What's Inside
 
 ```
-ComfyUI API Toolkit
+ComfyUI API Toolkit v1.3.0
 ├── Kling AI         32 nodes   (video, image, audio, effects)
 ├── ElevenLabs       15 nodes   (TTS, voice cloning, music, transcription)
-└── Google Gemini    13 nodes   (image gen/edit, text, vision, chat)
+├── Google Gemini    20 nodes   (entire API covered -- text, image, audio, video, embeddings)
+└── Utils             1 node    (pixel art resize)
                   ----------
-                    60 nodes total
+                    68 nodes total
 ```
 
 ---
@@ -91,32 +92,69 @@ The gold standard for AI voice. Text to speech, speech to speech, voice cloning,
 
 ---
 
-### Google Gemini -- 13 nodes
+### Google Gemini -- 20 nodes
 
-Gemini brings multimodal generation to the party: image generation with multi-reference support, image editing, inpainting, outpainting, vision analysis, text generation, prompt refinement, multi-turn chat, and structured JSON output. Thinking mode is configurable. Safety settings are configurable. Whether you configure them is up to you.
+The Gemini service went from "a few image nodes" to covering the entire Gemini API. That means text, vision, image generation via both Gemini and Imagen, image editing, inpainting, outpainting, TTS with 30+ voices, music generation via Lyria, video generation via Veo, and embeddings. If Google offers it through their API, there's a node for it now.
 
-**Config**
+**Config -- 6 nodes**
 - Gemini API Key
 - Gemini Model Selector
 - Gemini Safety Settings
 - Gemini Thinking Config
+- Gemini List Available Models -- queries your API key for what's actually accessible to your account
+- Gemini Token Counter
 
-**Text**
-- Gemini Text Generation
+**Text -- 4 nodes**
+- Gemini Text Generation -- 33 model options across Gemini 3 previews, 2.5, 2.0, and the full Gemma family
 - Gemini Prompt Refiner
 - Gemini Multi-Turn Chat
-- Gemini Structured Output (JSON)
+- Gemini Structured Output -- JSON-schema constrained generation
 
-**Image**
+**Image -- 6 nodes**
 - Gemini Vision Analysis
-- Gemini Image Generation
+- Gemini Image Generation -- Nano Banana / 2 / Pro via generate_content
+- Imagen Image Generation -- Imagen 4 Ultra / Standard / Fast via generate_images
 - Gemini Image Edit
 - Gemini Inpaint
 - Gemini Outpaint
 
+**Audio -- 2 nodes**
+- Gemini Text-to-Speech -- 30+ prebuilt voices across 3 TTS models
+- Gemini Music Generation -- Lyria 3 Clip and Pro
+
+**Video -- 1 node**
+- Gemini Video Generation -- Veo 3.1, 3.0, 2.0, preview, fast, and lite variants
+
+**Embeddings -- 1 node**
+- Gemini Text Embeddings -- 768 to 3072 dimensions with task-type optimization
+
+#### Full model coverage
+
+| Category | Models |
+|----------|--------|
+| Gemini text / multimodal | 13 models (Gemini 3 previews, 2.5, 2.0, latest aliases) |
+| Gemma open models | 8 models (3-1b through 4-31b) |
+| Gemini image gen | 3 Nano Banana models |
+| Imagen | 3 Imagen 4 models (Ultra, Standard, Fast) |
+| TTS | 3 TTS models + 30 prebuilt voices |
+| Embeddings | 2 embedding models |
+| Video | 6 Veo models |
+| Music | 2 Lyria models |
+| Specialized | Robotics ER, Computer Use, Deep Research, TTS previews |
+
+---
+
+### Utils -- 1 node
+
+**Pixel Art Resize**
+Resizes images to pixel art with proper palette locking across frames for animations. Uses Floyd-Steinberg dithering and scipy KDTree acceleration so palette matching doesn't take all day.
+
 ---
 
 ## Features Worth Knowing About
+
+**Auto-discovery for services**
+Services are discovered from the filesystem. Drop a folder under `services/` and it loads. Nothing to register, nothing to hardcode.
 
 **Graceful service fallback**
 Don't have `google-genai` installed? Gemini nodes don't load. Everything else does. Same deal for Kling and ElevenLabs. Install what you need, ignore what you don't.
@@ -135,6 +173,12 @@ ComfyUI caches node outputs. API nodes that cache are useless. Every API node he
 
 **Tooltips on every parameter**
 Hover over any input and there's a tooltip explaining what it does. Shockingly underrated feature.
+
+**Output directory auto-creation**
+If your output path doesn't exist, it gets created. No silent failures because someone forgot to mkdir.
+
+**Cloud uploader auto-fallback**
+The cloud uploader tries catbox first, falls back to tmpfiles if it fails. Assets get uploaded regardless.
 
 ---
 
