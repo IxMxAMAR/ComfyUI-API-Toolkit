@@ -28,6 +28,8 @@ from .client import (
     retry_with_backoff,
     TEXT_MODELS,
     IMAGE_MODELS,
+    IMAGEN_MODELS,
+    IMAGEN_ASPECT_RATIOS,
     ALL_MODELS,
     ASPECT_RATIOS,
     THINKING_LEVELS,
@@ -1299,23 +1301,249 @@ class AIS_Gemini_Outpaint(AlwaysExecuteMixin):
 
 
 # ===================================================================
+# List Available Models (queries API for what your key can actually access)
+# ===================================================================
+
+class AIS_Gemini_ListModels(AlwaysExecuteMixin):
+    """List models available for your API key.
+
+    Useful when model IDs change between API versions or between Vertex AI
+    and the Developer API. Returns the raw list so you know what to put in
+    custom_model.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "api_key": ("STRING", {
+                    "default": "",
+                    "password": True,
+                    "tooltip": "Gemini API key. Leave blank to use GEMINI_API_KEY env var.",
+                }),
+            },
+            "optional": {
+                "filter": (["all", "image_generation", "text_only", "multimodal"], {
+                    "default": "all",
+                    "tooltip": "Filter by capability. 'image_generation' shows only models that can output images.",
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("STRING", "STRING")
+    RETURN_NAMES = ("models_text", "models_json")
+    FUNCTION = "list_models"
+    CATEGORY = "API Toolkit/Gemini/Config"
+
+    def list_models(self, api_key, filter="all"):
+        key = get_api_key(api_key)
+        client = get_client(key)
+
+        all_models = []
+        for m in client.models.list():
+            name = getattr(m, "name", "") or ""
+            # Strip "models/" prefix if present
+            clean_name = name.replace("models/", "")
+            methods = list(getattr(m, "supported_actions", []) or [])
+            # Also check older attribute name
+            if not methods:
+                methods = list(getattr(m, "supported_generation_methods", []) or [])
+            display = getattr(m, "display_name", "") or ""
+            desc = getattr(m, "description", "") or ""
+
+            entry = {
+                "name": clean_name,
+                "display_name": display,
+                "description": desc[:200],
+                "methods": methods,
+            }
+            all_models.append(entry)
+
+        # Apply filter
+        filtered = all_models
+        if filter == "image_generation":
+            filtered = [m for m in all_models
+                        if "image" in m["name"].lower()
+                        or any("image" in x.lower() for x in m["methods"])
+                        or "imagen" in m["name"].lower()]
+        elif filter == "text_only":
+            filtered = [m for m in all_models
+                        if "image" not in m["name"].lower() and "vision" not in m["name"].lower()]
+        elif filter == "multimodal":
+            filtered = [m for m in all_models
+                        if any(m["name"].lower().startswith(p) for p in ["gemini", "models/gemini"])]
+
+        # Build human-readable text
+        lines = []
+        for m in filtered:
+            method_str = ", ".join(m["methods"]) if m["methods"] else "?"
+            lines.append(f"{m['name']}  |  {m['display_name']}  |  [{method_str}]")
+        text_out = "\n".join(lines) if lines else "(no matching models)"
+
+        return (text_out, json.dumps(filtered, indent=2))
+
+
+# ===================================================================
+# Imagen Generation (uses generate_images endpoint, not generate_content)
+# ===================================================================
+
+class AIS_Gemini_ImagenGen(AlwaysExecuteMixin):
+    """Generate images using Google Imagen models.
+
+    Imagen uses a separate API endpoint (generate_images) from Gemini's image
+    generation. It supports Imagen 4 Ultra / Standard / Fast, plus Imagen 3.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "api_key": ("STRING", {
+                    "default": "",
+                    "password": True,
+                    "tooltip": "Gemini API key. Leave blank to use GEMINI_API_KEY env var.",
+                }),
+                "model": (IMAGEN_MODELS, {
+                    "default": "imagen-4.0-generate-001",
+                    "tooltip": "Imagen model. Ultra = highest quality, Standard = balanced, Fast = cheaper/faster.",
+                }),
+                "prompt": ("STRING", {
+                    "multiline": True,
+                    "default": "",
+                    "tooltip": "Describe the image to generate.",
+                }),
+            },
+            "optional": {
+                "custom_model": ("STRING", {
+                    "default": "",
+                    "tooltip": "Override with a custom model ID (takes priority over dropdown).",
+                }),
+                "number_of_images": ("INT", {
+                    "default": 1, "min": 1, "max": 4,
+                    "tooltip": "How many images to generate in one call (Imagen supports up to 4).",
+                }),
+                "aspect_ratio": (IMAGEN_ASPECT_RATIOS, {
+                    "default": "1:1",
+                    "tooltip": "Output aspect ratio. Imagen supports: 1:1, 3:4, 4:3, 9:16, 16:9.",
+                }),
+                "negative_prompt": ("STRING", {
+                    "default": "",
+                    "tooltip": "Things to avoid in the image.",
+                }),
+                "seed": ("INT", {
+                    "default": 0, "min": 0, "max": 2147483647,
+                    "tooltip": "Seed for reproducibility. 0 = random.",
+                }),
+                "safety_filter_level": (
+                    ["block_low_and_above"],
+                    {"default": "block_low_and_above",
+                     "tooltip": "Safety filter threshold. The Developer API only accepts block_low_and_above. (Vertex AI supports more levels.)"}
+                ),
+                "person_generation": (
+                    ["dont_allow", "allow_adult", "allow_all"],
+                    {"default": "allow_adult",
+                     "tooltip": "Whether/how to generate people. Some models enforce stricter defaults."}
+                ),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("images",)
+    FUNCTION = "generate"
+    CATEGORY = "API Toolkit/Gemini/Image"
+
+    def generate(
+        self,
+        api_key,
+        model,
+        prompt,
+        custom_model="",
+        number_of_images=1,
+        aspect_ratio="1:1",
+        negative_prompt="",
+        seed=0,
+        safety_filter_level="block_medium_and_above",
+        person_generation="allow_adult",
+    ):
+        from google.genai import types
+        import torch
+        import numpy as np
+
+        key = get_api_key(api_key)
+        final_model = _resolve_model(model, custom_model)
+        client = get_client(key)
+
+        cfg_kwargs = {
+            "number_of_images": number_of_images,
+            "aspect_ratio": aspect_ratio,
+            "safety_filter_level": safety_filter_level,
+            "person_generation": person_generation,
+        }
+        if negative_prompt and negative_prompt.strip():
+            cfg_kwargs["negative_prompt"] = negative_prompt.strip()
+        if seed > 0:
+            cfg_kwargs["seed"] = seed
+
+        config = types.GenerateImagesConfig(**cfg_kwargs)
+
+        def _call():
+            response = client.models.generate_images(
+                model=final_model,
+                prompt=prompt,
+                config=config,
+            )
+            return response
+
+        response = retry_with_backoff(_call)
+
+        generated = getattr(response, "generated_images", None) or []
+        if not generated:
+            raise RuntimeError(
+                f"Imagen returned no images. Model: {final_model}. "
+                f"Prompt may have been blocked by safety filters."
+            )
+
+        # Each generated_image has .image with .image_bytes
+        tensors = []
+        for gen_img in generated:
+            img_bytes = None
+            # Different SDK versions expose this differently — handle both
+            if hasattr(gen_img, "image") and gen_img.image is not None:
+                img_bytes = getattr(gen_img.image, "image_bytes", None)
+            if img_bytes is None and hasattr(gen_img, "image_bytes"):
+                img_bytes = gen_img.image_bytes
+            if img_bytes is None:
+                continue
+            tensors.append(bytes_to_tensor(img_bytes))
+
+        if not tensors:
+            raise RuntimeError("Imagen returned results but no image data could be extracted.")
+
+        # Concatenate into a batch
+        batch = torch.cat(tensors, dim=0)
+        return (batch,)
+
+
+# ===================================================================
 # NODE MAPPINGS
 # ===================================================================
 
 NODE_CLASS_MAPPINGS = {
-    # Config (3)
+    # Config (5)
     "AIS_Gemini_APIKey": AIS_Gemini_APIKey,
     "AIS_Gemini_ModelSelector": AIS_Gemini_ModelSelector,
     "AIS_Gemini_SafetySettings": AIS_Gemini_SafetySettings,
     "AIS_Gemini_ThinkingConfig": AIS_Gemini_ThinkingConfig,
+    "AIS_Gemini_ListModels": AIS_Gemini_ListModels,
     # Text (4)
     "AIS_Gemini_TextGen": AIS_Gemini_TextGen,
     "AIS_Gemini_PromptRefiner": AIS_Gemini_PromptRefiner,
     "AIS_Gemini_MultiTurn": AIS_Gemini_MultiTurn,
     "AIS_Gemini_StructuredOutput": AIS_Gemini_StructuredOutput,
-    # Image (5)
+    # Image (6)
     "AIS_Gemini_Vision": AIS_Gemini_Vision,
     "AIS_Gemini_ImageGen": AIS_Gemini_ImageGen,
+    "AIS_Gemini_ImagenGen": AIS_Gemini_ImagenGen,
     "AIS_Gemini_ImageEdit": AIS_Gemini_ImageEdit,
     "AIS_Gemini_Inpaint": AIS_Gemini_Inpaint,
     "AIS_Gemini_Outpaint": AIS_Gemini_Outpaint,
@@ -1327,6 +1555,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "AIS_Gemini_ModelSelector": "Gemini Model Selector",
     "AIS_Gemini_SafetySettings": "Gemini Safety Settings",
     "AIS_Gemini_ThinkingConfig": "Gemini Thinking Config",
+    "AIS_Gemini_ListModels": "Gemini List Available Models",
     # Text
     "AIS_Gemini_TextGen": "Gemini Text Generation",
     "AIS_Gemini_PromptRefiner": "Gemini Prompt Refiner",
@@ -1334,7 +1563,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "AIS_Gemini_StructuredOutput": "Gemini Structured Output (JSON)",
     # Image
     "AIS_Gemini_Vision": "Gemini Vision Analysis",
-    "AIS_Gemini_ImageGen": "Gemini Image Generation",
+    "AIS_Gemini_ImageGen": "Gemini Image Generation (Nano Banana)",
+    "AIS_Gemini_ImagenGen": "Imagen Image Generation",
     "AIS_Gemini_ImageEdit": "Gemini Image Edit",
     "AIS_Gemini_Inpaint": "Gemini Inpaint",
     "AIS_Gemini_Outpaint": "Gemini Outpaint",
