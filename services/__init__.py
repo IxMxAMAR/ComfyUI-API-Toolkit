@@ -12,7 +12,21 @@ import sys
 NODE_CLASS_MAPPINGS = {}
 NODE_DISPLAY_NAME_MAPPINGS = {}
 
-_SERVICE_DIRS = ["kling", "elevenlabs", "gemini"]
+def _discover_service_dirs():
+    """Scan this directory for service subfolders (any folder with __init__.py)."""
+    base = os.path.dirname(__file__)
+    dirs = []
+    for name in sorted(os.listdir(base)):
+        path = os.path.join(base, name)
+        if not os.path.isdir(path):
+            continue
+        if name.startswith("_") or name.startswith("."):
+            continue
+        if os.path.exists(os.path.join(path, "__init__.py")):
+            dirs.append(name)
+    return dirs
+
+_SERVICE_DIRS = _discover_service_dirs()
 _PACKAGE = __name__  # "services" when loaded as part of ComfyUI-AI-Suite
 
 # Use ASCII-safe markers that work on all console encodings (including cp1252 on Windows)
