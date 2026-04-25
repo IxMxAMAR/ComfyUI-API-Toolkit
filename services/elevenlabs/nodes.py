@@ -667,8 +667,9 @@ class AIS_EL_STS(AlwaysExecuteMixin):
         data = {
             "model_id": model,
             "voice_settings": voice_settings,
-            "remove_background_noise": str(remove_background_noise).lower(),
         }
+        if remove_background_noise:
+            data["remove_background_noise"] = "true"
         if seed > 0:
             data["seed"] = str(seed)
 
@@ -803,6 +804,7 @@ class AIS_EL_AudioIsolation(AlwaysExecuteMixin):
             timeout=300,
             headers={"xi-api-key": key},
             files={"audio": ("input.wav", audio_bytes, "audio/wav")},
+            params={"output_format": output_format},
         )
         check_response(resp)
 
