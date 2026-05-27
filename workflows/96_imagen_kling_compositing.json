@@ -1,0 +1,411 @@
+{
+  "last_node_id": 6,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "AIS_Gemini_APIKey",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "gemini_api",
+        "Node name for S&R": "AIS_Gemini_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "AIS_Kling_Auth",
+      "pos": [
+        50,
+        174
+      ],
+      "size": [
+        320,
+        134
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "links": [
+            2,
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "kling_auth",
+        "Node name for S&R": "AIS_Kling_Auth"
+      },
+      "widgets_values": [
+        "",
+        "",
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "AIS_Gemini_ImagenGen",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        274
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 1,
+          "widget": {
+            "name": "api_key"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "imagen",
+        "Node name for S&R": "AIS_Gemini_ImagenGen"
+      },
+      "widgets_values": [
+        "imagen-4.0-generate-preview-06-06",
+        "A sweeping aerial panorama of a mountain range at golden hour, dramatic clouds, photorealistic",
+        "",
+        1,
+        "16:9",
+        "",
+        0,
+        "block_low_and_above",
+        "dont_allow"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "AIS_Kling_ImageExtend",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        162
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "link": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "url",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "recipe_id": "extend",
+        "Node name for S&R": "AIS_Kling_ImageExtend"
+      },
+      "widgets_values": [
+        "",
+        "Extend the panorama naturally, seamlessly continue the mountain range and golden sky",
+        "21:9"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "AIS_Kling_Upscale",
+      "pos": [
+        1190,
+        50
+      ],
+      "size": [
+        320,
+        210
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "link": 3
+        },
+        {
+          "name": "target_id",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "target_id"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "media",
+          "type": "IMAGE",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "media_file",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "url",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "recipe_id": "upscale",
+        "Node name for S&R": "AIS_Kling_Upscale"
+      },
+      "widgets_values": [
+        "image",
+        "clarity-upscaler-v2",
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        1570,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 6
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "preview",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      4,
+      0,
+      "KLING_AUTH"
+    ],
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      "KLING_AUTH"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      1,
+      "IMAGE"
+    ],
+    [
+      5,
+      4,
+      2,
+      5,
+      1,
+      "STRING"
+    ],
+    [
+      6,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Gemini Setup",
+      "bounding": [
+        30,
+        0,
+        360,
+        164
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Kling Setup",
+      "bounding": [
+        30,
+        124,
+        360,
+        204
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Generate",
+      "bounding": [
+        410,
+        0,
+        360,
+        344
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Extend",
+      "bounding": [
+        790,
+        0,
+        360,
+        232
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Upscale",
+      "bounding": [
+        1170,
+        0,
+        740,
+        280
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Generate a high-quality image with AIS_Gemini_ImagenGen, extend its canvas with AIS_Kling_ImageExtend for a wider composition, then upscale with AIS_Kling_Upscale.",
+    "title": "API Toolkit \u2014 Imagen \u2192 Kling Extend & Upscale",
+    "tier": 2,
+    "pack": "ComfyUI-API-Toolkit"
+  },
+  "version": 0.4
+}

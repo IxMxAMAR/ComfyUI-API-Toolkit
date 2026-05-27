@@ -1,0 +1,476 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "AIS_Gemini_APIKey",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "gemini_api",
+        "Node name for S&R": "AIS_Gemini_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "AIS_Kling_Auth",
+      "pos": [
+        50,
+        174
+      ],
+      "size": [
+        320,
+        134
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "links": [
+            2,
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "kling_auth",
+        "Node name for S&R": "AIS_Kling_Auth"
+      },
+      "widgets_values": [
+        "",
+        "",
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "AIS_Gemini_MusicGen",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        214
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 1,
+          "widget": {
+            "name": "api_key"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "music",
+        "Node name for S&R": "AIS_Gemini_MusicGen"
+      },
+      "widgets_values": [
+        "lyria-realtime-exp",
+        "Lo-fi hip hop study music, warm vinyl crackle, mellow piano, soft drums, relaxing atmosphere",
+        "",
+        "harsh noise, distortion",
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewAudio",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "music_out",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "AIS_Kling_ImageGen",
+      "pos": [
+        430,
+        294
+      ],
+      "size": [
+        320,
+        242
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "url",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "recipe_id": "img",
+        "Node name for S&R": "AIS_Kling_ImageGen"
+      },
+      "widgets_values": [
+        "Lo-fi aesthetic album cover art, cozy anime-style room, rain window, warm lamp light, vinyl record, vintage feel",
+        "blur, low quality",
+        "kling-v2-master",
+        "1:1",
+        "1080p",
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "AIS_Kling_ImageToVideo",
+      "pos": [
+        810,
+        154
+      ],
+      "size": [
+        320,
+        270
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "link": 3
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "image_tail",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "camera_control",
+          "type": "KLING_CAMERA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "video_file",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "url",
+          "type": "STRING",
+          "links": [
+            6
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "recipe_id": "vid",
+        "Node name for S&R": "AIS_Kling_ImageToVideo"
+      },
+      "widgets_values": [
+        "Gentle rain falls outside the window, steam rises from a mug, looping seamless ambient animation",
+        "jitter, blur",
+        "kling-v3",
+        "5",
+        "std",
+        false,
+        0.5
+      ]
+    },
+    {
+      "id": 7,
+      "type": "AIS_Kling_FastVideoSaver",
+      "pos": [
+        1190,
+        50
+      ],
+      "size": [
+        320,
+        128
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "url",
+          "type": "STRING",
+          "link": 6,
+          "widget": {
+            "name": "url"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "file_path",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "filename",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "saver",
+        "Node name for S&R": "AIS_Kling_FastVideoSaver"
+      },
+      "widgets_values": [
+        "music_visualiser"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      5,
+      0,
+      "KLING_AUTH"
+    ],
+    [
+      3,
+      2,
+      0,
+      6,
+      0,
+      "KLING_AUTH"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      0,
+      "AUDIO"
+    ],
+    [
+      5,
+      5,
+      0,
+      6,
+      1,
+      "IMAGE"
+    ],
+    [
+      6,
+      6,
+      3,
+      7,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Gemini Setup",
+      "bounding": [
+        30,
+        0,
+        360,
+        164
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Kling Setup",
+      "bounding": [
+        30,
+        124,
+        360,
+        204
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Music",
+      "bounding": [
+        410,
+        0,
+        740,
+        284
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Cover Art",
+      "bounding": [
+        410,
+        244,
+        360,
+        312
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Visualiser",
+      "bounding": [
+        790,
+        104,
+        360,
+        340
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Output",
+      "bounding": [
+        1170,
+        0,
+        360,
+        198
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Generate music with AIS_Gemini_MusicGen, create matching album artwork with AIS_Kling_ImageGen, then animate the artwork into a music video with AIS_Kling_ImageToVideo.",
+    "title": "API Toolkit \u2014 Music to Video (Album Art Visualiser)",
+    "tier": 2,
+    "pack": "ComfyUI-API-Toolkit"
+  },
+  "version": 0.4
+}

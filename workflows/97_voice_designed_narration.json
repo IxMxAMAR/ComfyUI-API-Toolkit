@@ -1,0 +1,445 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 7,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "AIS_EL_APIKey",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            1,
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "el_api",
+        "Node name for S&R": "AIS_EL_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "AIS_Gemini_APIKey",
+      "pos": [
+        50,
+        174
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "gemini_api",
+        "Node name for S&R": "AIS_Gemini_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "AIS_EL_VoiceDesign",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        148
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 1,
+          "widget": {
+            "name": "api_key"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview_audio",
+          "type": "AUDIO",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "generated_voice_id",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "design",
+        "Node name for S&R": "AIS_EL_VoiceDesign"
+      },
+      "widgets_values": [
+        "In the heart of the ancient forest, where the trees whisper secrets of centuries past.",
+        "A deep, resonant male narrator with a storytelling warmth, slightly gravelly, like a seasoned audiobook reader"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewAudio",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "preview",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "AIS_Gemini_TextGen",
+      "pos": [
+        430,
+        228
+      ],
+      "size": [
+        320,
+        334
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "api_key"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "textgen",
+        "Node name for S&R": "AIS_Gemini_TextGen"
+      },
+      "widgets_values": [
+        "gemini-2.5-flash",
+        "",
+        "Write a 2-paragraph nature narration script about an ancient redwood forest. Poetic, vivid, suitable for a deep storytelling voice.",
+        "",
+        0.7,
+        0.95,
+        0,
+        0,
+        "NONE",
+        0,
+        -1,
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "AIS_EL_TTS",
+      "pos": [
+        1190,
+        50
+      ],
+      "size": [
+        320,
+        428
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "api_key"
+          }
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 6,
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "name": "voice_id",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "voice_id"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "raw_response_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "tts",
+        "Node name for S&R": "AIS_EL_TTS"
+      },
+      "widgets_values": [
+        "eleven_v3",
+        0.6,
+        0.75,
+        0.0,
+        1.0,
+        true,
+        "Auto Detect",
+        "auto",
+        "mp3_44100_192",
+        0,
+        "",
+        "",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "PreviewAudio",
+      "pos": [
+        1570,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "audio_out",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      1,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      0,
+      "AUDIO"
+    ],
+    [
+      5,
+      3,
+      1,
+      6,
+      2,
+      "STRING"
+    ],
+    [
+      6,
+      5,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      7,
+      6,
+      0,
+      7,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "EL Setup",
+      "bounding": [
+        30,
+        0,
+        360,
+        164
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Gemini Setup",
+      "bounding": [
+        30,
+        124,
+        360,
+        164
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Voice Design",
+      "bounding": [
+        410,
+        0,
+        740,
+        218
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Script",
+      "bounding": [
+        410,
+        178,
+        360,
+        404
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Narrate",
+      "bounding": [
+        1170,
+        0,
+        740,
+        498
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Design a custom voice with AIS_EL_VoiceDesign, write a matching script with AIS_Gemini_TextGen, then narrate using the designed voice's ID with AIS_EL_TTS.",
+    "title": "API Toolkit \u2014 Voice Design + Gemini Script Narration",
+    "tier": 2,
+    "pack": "ComfyUI-API-Toolkit"
+  },
+  "version": 0.4
+}

@@ -1,0 +1,602 @@
+{
+  "last_node_id": 9,
+  "last_link_id": 9,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "AIS_Kling_Auth",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        320,
+        134
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "kling_auth",
+        "Node name for S&R": "AIS_Kling_Auth"
+      },
+      "widgets_values": [
+        "",
+        "",
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "type": "AIS_Gemini_APIKey",
+      "pos": [
+        50,
+        214
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "gemini_api",
+        "Node name for S&R": "AIS_Gemini_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "AIS_EL_APIKey",
+      "pos": [
+        50,
+        338
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "links": [
+            2,
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "el_api",
+        "Node name for S&R": "AIS_EL_APIKey"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "AIS_EL_VoiceSelector",
+      "pos": [
+        50,
+        462
+      ],
+      "size": [
+        320,
+        114
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "voice_id",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "voice",
+        "Node name for S&R": "AIS_EL_VoiceSelector"
+      },
+      "widgets_values": [
+        "Charlotte",
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "AIS_Kling_VideoToAudio",
+      "pos": [
+        430,
+        50
+      ],
+      "size": [
+        320,
+        122
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "auth",
+          "type": "KLING_AUTH",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "url",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "recipe_id": "v2a",
+        "Node name for S&R": "AIS_Kling_VideoToAudio"
+      },
+      "widgets_values": [
+        "https://example.com/kling_video.mp4"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "AIS_EL_STT",
+      "pos": [
+        810,
+        50
+      ],
+      "size": [
+        320,
+        342
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "api_key"
+          }
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "language_code",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "words_json",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "recipe_id": "stt",
+        "Node name for S&R": "AIS_EL_STT"
+      },
+      "widgets_values": [
+        "scribe_v1",
+        "en",
+        false,
+        false,
+        0,
+        "word",
+        0,
+        0.5,
+        0.0,
+        "",
+        false
+      ]
+    },
+    {
+      "id": 7,
+      "type": "AIS_Gemini_TextGen",
+      "pos": [
+        1190,
+        50
+      ],
+      "size": [
+        320,
+        334
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "api_key"
+          }
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 7,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "translate",
+        "Node name for S&R": "AIS_Gemini_TextGen"
+      },
+      "widgets_values": [
+        "gemini-2.5-flash",
+        "",
+        "You are a professional translator. Output only the translated text, no commentary.",
+        0.2,
+        0.95,
+        0,
+        0,
+        "NONE",
+        0,
+        -1,
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "AIS_EL_TTS",
+      "pos": [
+        1570,
+        50
+      ],
+      "size": [
+        320,
+        428
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "api_key",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "api_key"
+          }
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 8,
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "name": "voice_id",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "voice_id"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "raw_response_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "recipe_id": "tts",
+        "Node name for S&R": "AIS_EL_TTS"
+      },
+      "widgets_values": [
+        "eleven_v3",
+        0.5,
+        0.75,
+        0.0,
+        1.0,
+        true,
+        "es",
+        "auto",
+        "mp3_44100_192",
+        0,
+        "",
+        "",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PreviewAudio",
+      "pos": [
+        1950,
+        50
+      ],
+      "size": [
+        320,
+        74
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "recipe_id": "audio_out",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      5,
+      0,
+      "KLING_AUTH"
+    ],
+    [
+      2,
+      3,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      7,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      3,
+      0,
+      8,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      4,
+      0,
+      8,
+      2,
+      "STRING"
+    ],
+    [
+      6,
+      5,
+      0,
+      6,
+      1,
+      "AUDIO"
+    ],
+    [
+      7,
+      6,
+      0,
+      7,
+      1,
+      "STRING"
+    ],
+    [
+      8,
+      7,
+      0,
+      8,
+      1,
+      "STRING"
+    ],
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Kling Setup",
+      "bounding": [
+        30,
+        0,
+        360,
+        204
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Gemini Setup",
+      "bounding": [
+        30,
+        164,
+        360,
+        164
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "EL Setup",
+      "bounding": [
+        30,
+        288,
+        360,
+        308
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Extract",
+      "bounding": [
+        410,
+        0,
+        360,
+        192
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Transcribe",
+      "bounding": [
+        790,
+        0,
+        360,
+        412
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Translate",
+      "bounding": [
+        1170,
+        0,
+        360,
+        404
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Dub",
+      "bounding": [
+        1550,
+        0,
+        740,
+        498
+      ],
+      "color": "#3F789E",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "description": "Extract audio from a Kling video URL, transcribe with ElevenLabs STT, translate with Gemini, then re-synthesise in the target language with ElevenLabs TTS.",
+    "title": "API Toolkit \u2014 Video Translation Pipeline",
+    "tier": 2,
+    "pack": "ComfyUI-API-Toolkit"
+  },
+  "version": 0.4
+}
