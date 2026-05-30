@@ -1,17 +1,17 @@
 {
-  "last_node_id": 5,
-  "last_link_id": 5,
+  "last_node_id": 4,
+  "last_link_id": 4,
   "nodes": [
     {
       "id": 1,
       "type": "AIS_EL_APIKey",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 1,
@@ -40,12 +40,12 @@
       "id": 2,
       "type": "AIS_EL_VoiceDesign",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        148
+        282
       ],
       "flags": {},
       "order": 2,
@@ -91,12 +91,12 @@
       "id": 3,
       "type": "AIS_EL_VoiceCreate",
       "pos": [
-        430,
-        228
+        460,
+        392
       ],
       "size": [
         320,
-        154
+        170
       ],
       "flags": {},
       "order": 3,
@@ -123,9 +123,7 @@
         {
           "name": "voice_id",
           "type": "STRING",
-          "links": [
-            5
-          ],
+          "links": [],
           "slot_index": 0
         }
       ],
@@ -142,12 +140,12 @@
       "id": 4,
       "type": "PreviewAudio",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 4,
@@ -163,44 +161,6 @@
       "properties": {
         "recipe_id": "preview",
         "Node name for S&R": "PreviewAudio"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 5,
-      "type": "ShowText",
-      "pos": [
-        810,
-        154
-      ],
-      "size": [
-        320,
-        94
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 5,
-          "widget": {
-            "name": "text"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "recipe_id": "show_id",
-        "Node name for S&R": "ShowText"
       },
       "widgets_values": []
     }
@@ -237,24 +197,16 @@
       3,
       1,
       "STRING"
-    ],
-    [
-      5,
-      3,
-      0,
-      5,
-      0,
-      "STRING"
     ]
   ],
   "groups": [
     {
       "title": "Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        164
+        35,
+        -1,
+        370,
+        190
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -263,10 +215,10 @@
     {
       "title": "Action",
       "bounding": [
-        410,
-        0,
-        360,
-        402
+        435,
+        -1,
+        370,
+        588
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -275,10 +227,10 @@
     {
       "title": "Output",
       "bounding": [
-        790,
-        0,
-        360,
-        268
+        835,
+        -1,
+        370,
+        322
       ],
       "color": "#3F789E",
       "font_size": 24,

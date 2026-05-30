@@ -1,17 +1,17 @@
 {
-  "last_node_id": 3,
-  "last_link_id": 2,
+  "last_node_id": 2,
+  "last_link_id": 1,
   "nodes": [
     {
       "id": 1,
       "type": "AIS_Kling_VideoLoader",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        122
+        140
       ],
       "flags": {},
       "order": 1,
@@ -29,9 +29,7 @@
         {
           "name": "video_path",
           "type": "STRING",
-          "links": [
-            2
-          ],
+          "links": [],
           "slot_index": 1
         },
         {
@@ -53,12 +51,12 @@
       "id": 2,
       "type": "PreviewImage",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 2,
@@ -76,44 +74,6 @@
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
-    },
-    {
-      "id": 3,
-      "type": "ShowText",
-      "pos": [
-        430,
-        154
-      ],
-      "size": [
-        320,
-        94
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 2,
-          "widget": {
-            "name": "text"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "recipe_id": "path_out",
-        "Node name for S&R": "ShowText"
-      },
-      "widgets_values": []
     }
   ],
   "links": [
@@ -124,24 +84,16 @@
       2,
       0,
       "IMAGE"
-    ],
-    [
-      2,
-      1,
-      1,
-      3,
-      0,
-      "STRING"
     ]
   ],
   "groups": [
     {
       "title": "Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        192
+        35,
+        -1,
+        370,
+        226
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -150,10 +102,10 @@
     {
       "title": "Output",
       "bounding": [
-        410,
-        0,
-        360,
-        268
+        435,
+        -1,
+        370,
+        322
       ],
       "color": "#3F789E",
       "font_size": 24,

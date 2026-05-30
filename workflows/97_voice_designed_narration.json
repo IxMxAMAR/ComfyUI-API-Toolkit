@@ -6,12 +6,12 @@
       "id": 1,
       "type": "AIS_EL_APIKey",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 1,
@@ -40,12 +40,12 @@
       "id": 2,
       "type": "AIS_Gemini_APIKey",
       "pos": [
-        50,
-        174
+        60,
+        214
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 2,
@@ -73,12 +73,12 @@
       "id": 3,
       "type": "AIS_EL_VoiceDesign",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        148
+        282
       ],
       "flags": {},
       "order": 3,
@@ -124,12 +124,12 @@
       "id": 4,
       "type": "PreviewAudio",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 4,
@@ -152,12 +152,12 @@
       "id": 5,
       "type": "AIS_Gemini_TextGen",
       "pos": [
-        430,
-        228
+        460,
+        392
       ],
       "size": [
         320,
-        334
+        484
       ],
       "flags": {},
       "order": 5,
@@ -198,6 +198,7 @@
         "NONE",
         0,
         -1,
+        "randomize",
         ""
       ]
     },
@@ -205,12 +206,12 @@
       "id": 6,
       "type": "AIS_EL_TTS",
       "pos": [
-        1190,
-        50
+        1260,
+        60
       ],
       "size": [
         320,
-        428
+        532
       ],
       "flags": {},
       "order": 6,
@@ -272,6 +273,7 @@
         "auto",
         "mp3_44100_192",
         0,
+        "randomize",
         "",
         "",
         false,
@@ -282,12 +284,12 @@
       "id": 7,
       "type": "PreviewAudio",
       "pos": [
-        1570,
-        50
+        1660,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 7,
@@ -369,10 +371,10 @@
     {
       "title": "EL Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        164
+        35,
+        -1,
+        370,
+        190
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -381,10 +383,10 @@
     {
       "title": "Gemini Setup",
       "bounding": [
-        30,
-        124,
-        360,
-        164
+        35,
+        153,
+        370,
+        190
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -393,10 +395,10 @@
     {
       "title": "Voice Design",
       "bounding": [
-        410,
-        0,
-        740,
-        218
+        435,
+        -1,
+        770,
+        368
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -405,10 +407,10 @@
     {
       "title": "Script",
       "bounding": [
-        410,
-        178,
-        360,
-        404
+        435,
+        331,
+        370,
+        570
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -417,10 +419,10 @@
     {
       "title": "Narrate",
       "bounding": [
-        1170,
-        0,
-        740,
-        498
+        1235,
+        -1,
+        770,
+        618
       ],
       "color": "#3F789E",
       "font_size": 24,

@@ -6,12 +6,12 @@
       "id": 1,
       "type": "AIS_Kling_Auth",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        134
+        148
       ],
       "flags": {},
       "order": 1,
@@ -41,12 +41,12 @@
       "id": 2,
       "type": "AIS_Kling_ImageGen",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        242
+        330
       ],
       "flags": {},
       "order": 2,
@@ -100,12 +100,12 @@
       "id": 3,
       "type": "AIS_Utils_PixelArtResize",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        202
+        228
       ],
       "flags": {},
       "order": 3,
@@ -155,12 +155,12 @@
       "id": 4,
       "type": "PreviewImage",
       "pos": [
-        1190,
-        50
+        1260,
+        60
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 4,
@@ -183,12 +183,12 @@
       "id": 5,
       "type": "AIS_Utils_PixelArtResize",
       "pos": [
-        810,
-        282
+        860,
+        338
       ],
       "size": [
         320,
-        202
+        228
       ],
       "flags": {},
       "order": 5,
@@ -238,12 +238,12 @@
       "id": 6,
       "type": "PreviewImage",
       "pos": [
-        1190,
-        154
+        1260,
+        192
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 6,
@@ -266,12 +266,12 @@
       "id": 7,
       "type": "AIS_Utils_PixelArtResize",
       "pos": [
-        810,
-        514
+        860,
+        616
       ],
       "size": [
         320,
-        202
+        228
       ],
       "flags": {},
       "order": 7,
@@ -321,12 +321,12 @@
       "id": 8,
       "type": "PreviewImage",
       "pos": [
-        1190,
-        258
+        1260,
+        324
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 8,
@@ -408,10 +408,10 @@
     {
       "title": "Kling Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        204
+        35,
+        -1,
+        370,
+        234
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -420,10 +420,10 @@
     {
       "title": "Generate",
       "bounding": [
-        410,
-        0,
-        360,
-        312
+        435,
+        -1,
+        370,
+        416
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -432,10 +432,10 @@
     {
       "title": "GameBoy",
       "bounding": [
-        790,
-        0,
-        740,
-        272
+        835,
+        -1,
+        770,
+        314
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -444,10 +444,10 @@
     {
       "title": "NES 16",
       "bounding": [
-        790,
-        104,
-        740,
-        400
+        835,
+        131,
+        770,
+        460
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -456,10 +456,10 @@
     {
       "title": "Full 32",
       "bounding": [
-        790,
-        208,
-        740,
-        528
+        835,
+        263,
+        770,
+        606
       ],
       "color": "#3F789E",
       "font_size": 24,

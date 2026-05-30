@@ -6,12 +6,12 @@
       "id": 1,
       "type": "AIS_Gemini_APIKey",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 1,
@@ -39,12 +39,12 @@
       "id": 2,
       "type": "AIS_EL_APIKey",
       "pos": [
-        50,
-        174
+        60,
+        214
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 2,
@@ -72,12 +72,12 @@
       "id": 3,
       "type": "AIS_EL_VoiceSelector",
       "pos": [
-        50,
-        298
+        60,
+        368
       ],
       "size": [
         320,
-        114
+        126
       ],
       "flags": {},
       "order": 3,
@@ -106,12 +106,12 @@
       "id": 4,
       "type": "AIS_Kling_Auth",
       "pos": [
-        50,
-        442
+        60,
+        544
       ],
       "size": [
         320,
-        134
+        148
       ],
       "flags": {},
       "order": 4,
@@ -141,12 +141,12 @@
       "id": 5,
       "type": "AIS_Gemini_TextGen",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        334
+        484
       ],
       "flags": {},
       "order": 5,
@@ -187,6 +187,7 @@
         "NONE",
         0,
         -1,
+        "randomize",
         ""
       ]
     },
@@ -194,12 +195,12 @@
       "id": 6,
       "type": "AIS_EL_TTS",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        428
+        532
       ],
       "flags": {},
       "order": 6,
@@ -261,6 +262,7 @@
         "auto",
         "mp3_44100_192",
         0,
+        "randomize",
         "",
         "",
         false,
@@ -271,12 +273,12 @@
       "id": 7,
       "type": "LoadImage",
       "pos": [
-        430,
-        414
+        460,
+        594
       ],
       "size": [
         320,
-        108
+        122
       ],
       "flags": {},
       "order": 7,
@@ -310,12 +312,12 @@
       "id": 8,
       "type": "AIS_Kling_AvatarGen",
       "pos": [
-        1190,
-        50
+        1260,
+        60
       ],
       "size": [
         320,
-        190
+        278
       ],
       "flags": {},
       "order": 8,
@@ -385,12 +387,12 @@
       "id": 9,
       "type": "AIS_Kling_FastVideoSaver",
       "pos": [
-        1570,
-        50
+        1660,
+        60
       ],
       "size": [
         320,
-        128
+        144
       ],
       "flags": {},
       "order": 9,
@@ -498,10 +500,10 @@
     {
       "title": "Gemini Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        164
+        35,
+        -1,
+        370,
+        190
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -510,10 +512,10 @@
     {
       "title": "EL Setup",
       "bounding": [
-        30,
-        124,
-        360,
-        308
+        35,
+        153,
+        370,
+        366
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -522,10 +524,10 @@
     {
       "title": "Kling Setup",
       "bounding": [
-        30,
-        392,
-        360,
-        204
+        35,
+        483,
+        370,
+        234
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -534,10 +536,10 @@
     {
       "title": "Script",
       "bounding": [
-        410,
-        0,
-        360,
-        404
+        435,
+        -1,
+        370,
+        570
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -546,10 +548,10 @@
     {
       "title": "Speech",
       "bounding": [
-        790,
-        0,
-        360,
-        498
+        835,
+        -1,
+        370,
+        618
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -558,10 +560,10 @@
     {
       "title": "Avatar",
       "bounding": [
-        410,
-        0,
-        1120,
-        542
+        435,
+        -1,
+        1170,
+        742
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -570,10 +572,10 @@
     {
       "title": "Output",
       "bounding": [
-        1550,
-        0,
-        360,
-        198
+        1635,
+        -1,
+        370,
+        230
       ],
       "color": "#3F789E",
       "font_size": 24,

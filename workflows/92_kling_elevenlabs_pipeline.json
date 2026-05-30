@@ -6,12 +6,12 @@
       "id": 1,
       "type": "AIS_Kling_Auth",
       "pos": [
-        50,
-        50
+        60,
+        60
       ],
       "size": [
         320,
-        134
+        148
       ],
       "flags": {},
       "order": 1,
@@ -41,12 +41,12 @@
       "id": 2,
       "type": "AIS_EL_APIKey",
       "pos": [
-        50,
-        214
+        60,
+        258
       ],
       "size": [
         320,
-        94
+        104
       ],
       "flags": {},
       "order": 2,
@@ -74,12 +74,12 @@
       "id": 3,
       "type": "AIS_EL_VoiceSelector",
       "pos": [
-        50,
-        338
+        60,
+        412
       ],
       "size": [
         320,
-        114
+        126
       ],
       "flags": {},
       "order": 3,
@@ -108,12 +108,12 @@
       "id": 4,
       "type": "AIS_Kling_TextToVideo",
       "pos": [
-        430,
-        50
+        460,
+        60
       ],
       "size": [
         320,
-        310
+        410
       ],
       "flags": {},
       "order": 4,
@@ -184,12 +184,12 @@
       "id": 5,
       "type": "AIS_Kling_FastVideoSaver",
       "pos": [
-        810,
-        50
+        860,
+        60
       ],
       "size": [
         320,
-        128
+        144
       ],
       "flags": {},
       "order": 5,
@@ -230,12 +230,12 @@
       "id": 6,
       "type": "AIS_EL_TTS",
       "pos": [
-        430,
-        390
+        460,
+        520
       ],
       "size": [
         320,
-        428
+        532
       ],
       "flags": {},
       "order": 6,
@@ -290,6 +290,7 @@
         "auto",
         "mp3_44100_192",
         0,
+        "randomize",
         "",
         "",
         false,
@@ -300,12 +301,12 @@
       "id": 7,
       "type": "PreviewAudio",
       "pos": [
-        810,
-        208
+        860,
+        254
       ],
       "size": [
         320,
-        74
+        82
       ],
       "flags": {},
       "order": 7,
@@ -371,10 +372,10 @@
     {
       "title": "Kling Setup",
       "bounding": [
-        30,
-        0,
-        360,
-        204
+        35,
+        -1,
+        370,
+        234
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -383,10 +384,10 @@
     {
       "title": "EL Setup",
       "bounding": [
-        30,
-        164,
-        360,
-        308
+        35,
+        197,
+        370,
+        366
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -395,10 +396,10 @@
     {
       "title": "Video",
       "bounding": [
-        410,
-        0,
-        740,
-        380
+        435,
+        -1,
+        770,
+        496
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -407,10 +408,10 @@
     {
       "title": "Voiceover",
       "bounding": [
-        410,
-        158,
-        740,
-        680
+        435,
+        193,
+        770,
+        884
       ],
       "color": "#3F789E",
       "font_size": 24,
