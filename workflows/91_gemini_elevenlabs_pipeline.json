@@ -1,6 +1,6 @@
 {
-  "last_node_id": 6,
-  "last_link_id": 5,
+  "last_node_id": 7,
+  "last_link_id": 6,
   "nodes": [
     {
       "id": 1,
@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 1,
@@ -40,11 +40,11 @@
       "type": "AIS_EL_APIKey",
       "pos": [
         60,
-        214
+        198
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 2,
@@ -73,11 +73,11 @@
       "type": "AIS_EL_VoiceSelector",
       "pos": [
         60,
-        368
+        336
       ],
       "size": [
         320,
-        126
+        112
       ],
       "flags": {},
       "order": 3,
@@ -98,7 +98,7 @@
         "Node name for S&R": "AIS_EL_VoiceSelector"
       },
       "widgets_values": [
-        "Rachel",
+        "Rachel (female, american)",
         ""
       ]
     },
@@ -111,7 +111,7 @@
       ],
       "size": [
         320,
-        484
+        536
       ],
       "flags": {},
       "order": 4,
@@ -131,7 +131,8 @@
           "name": "text",
           "type": "STRING",
           "links": [
-            4
+            4,
+            5
           ],
           "slot_index": 0
         }
@@ -141,6 +142,7 @@
         "Node name for S&R": "AIS_Gemini_TextGen"
       },
       "widgets_values": [
+        "",
         "gemini-2.5-flash",
         "",
         "Write a 3-paragraph nature documentary narration script about the Amazon rainforest at dawn. Vivid, poetic, suitable for a calm narrator.",
@@ -165,7 +167,7 @@
       ],
       "size": [
         320,
-        532
+        572
       ],
       "flags": {},
       "order": 5,
@@ -217,6 +219,9 @@
         "Node name for S&R": "AIS_EL_TTS"
       },
       "widgets_values": [
+        "",
+        "",
+        "",
         "eleven_v3",
         0.5,
         0.75,
@@ -236,17 +241,57 @@
     },
     {
       "id": 6,
-      "type": "PreviewAudio",
+      "type": "ShowText|pysssss",
       "pos": [
         1260,
-        214
+        60
       ],
       "size": [
         320,
-        82
+        88
       ],
       "flags": {},
       "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "text_out",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "PreviewAudio",
+      "pos": [
+        1260,
+        198
+      ],
+      "size": [
+        320,
+        56
+      ],
+      "flags": {},
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -297,10 +342,18 @@
       "STRING"
     ],
     [
+      5,
+      4,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
       6,
       5,
       0,
-      6,
+      7,
       0,
       "AUDIO"
     ]
@@ -312,7 +365,7 @@
         35,
         -1,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -322,9 +375,9 @@
       "title": "EL Setup",
       "bounding": [
         35,
-        153,
+        137,
         370,
-        366
+        336
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -336,7 +389,7 @@
         435,
         -1,
         370,
-        570
+        622
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -348,7 +401,7 @@
         835,
         -1,
         370,
-        618
+        658
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -360,7 +413,7 @@
         1235,
         -1,
         370,
-        322
+        280
       ],
       "color": "#3F789E",
       "font_size": 24,

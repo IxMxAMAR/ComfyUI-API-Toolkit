@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 1,
@@ -44,7 +44,7 @@
       ],
       "size": [
         320,
-        1234
+        1488
       ],
       "flags": {},
       "order": 2,
@@ -74,6 +74,7 @@
         "Node name for S&R": "AIS_EL_Dialogue"
       },
       "widgets_values": [
+        "",
         "Hello everyone, welcome to the show.",
         "<replace_with_voice_id>",
         "Thanks for having me! Really excited to be here.",
@@ -111,7 +112,7 @@
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 3,
@@ -156,7 +157,7 @@
         35,
         -1,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -168,7 +169,7 @@
         435,
         -1,
         370,
-        1320
+        1574
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -180,7 +181,7 @@
         835,
         -1,
         370,
-        168
+        142
       ],
       "color": "#3F789E",
       "font_size": 24,

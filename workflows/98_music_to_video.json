@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 1,
@@ -40,11 +40,11 @@
       "type": "AIS_Kling_Auth",
       "pos": [
         60,
-        214
+        198
       ],
       "size": [
         320,
-        148
+        136
       ],
       "flags": {},
       "order": 2,
@@ -80,7 +80,7 @@
       ],
       "size": [
         320,
-        294
+        312
       ],
       "flags": {},
       "order": 3,
@@ -110,7 +110,8 @@
         "Node name for S&R": "AIS_Gemini_MusicGen"
       },
       "widgets_values": [
-        "lyria-realtime-exp",
+        "",
+        "lyria-3-pro-preview",
         "Lo-fi hip hop study music, warm vinyl crackle, mellow piano, soft drums, relaxing atmosphere",
         "",
         "harsh noise, distortion",
@@ -128,7 +129,7 @@
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 4,
@@ -152,11 +153,11 @@
       "type": "AIS_Kling_ImageGen",
       "pos": [
         460,
-        404
+        422
       ],
       "size": [
         320,
-        330
+        352
       ],
       "flags": {},
       "order": 5,
@@ -197,9 +198,9 @@
       "widgets_values": [
         "Lo-fi aesthetic album cover art, cozy anime-style room, rain window, warm lamp light, vinyl record, vintage feel",
         "blur, low quality",
-        "kling-v2-master",
+        "kling-v3",
         "1:1",
-        "1080p",
+        "1k",
         0.5,
         1
       ]
@@ -209,11 +210,11 @@
       "type": "AIS_Kling_ImageToVideo",
       "pos": [
         860,
-        192
+        166
       ],
       "size": [
         320,
-        366
+        392
       ],
       "flags": {},
       "order": 6,
@@ -297,7 +298,7 @@
       ],
       "size": [
         320,
-        144
+        132
       ],
       "flags": {},
       "order": 7,
@@ -331,6 +332,7 @@
         "Node name for S&R": "AIS_Kling_FastVideoSaver"
       },
       "widgets_values": [
+        "",
         "music_visualiser"
       ]
     }
@@ -392,7 +394,7 @@
         35,
         -1,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -402,9 +404,9 @@
       "title": "Kling Setup",
       "bounding": [
         35,
-        153,
+        137,
         370,
-        234
+        222
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -416,7 +418,7 @@
         435,
         -1,
         770,
-        380
+        398
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -426,9 +428,9 @@
       "title": "Cover Art",
       "bounding": [
         435,
-        343,
+        361,
         370,
-        416
+        438
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -438,9 +440,9 @@
       "title": "Visualiser",
       "bounding": [
         835,
-        131,
+        105,
         370,
-        452
+        478
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -452,7 +454,7 @@
         1235,
         -1,
         370,
-        230
+        218
       ],
       "color": "#3F789E",
       "font_size": 24,

@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 1,
@@ -40,11 +40,11 @@
       "type": "AIS_EL_APIKey",
       "pos": [
         60,
-        214
+        198
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 2,
@@ -73,11 +73,11 @@
       "type": "AIS_EL_VoiceSelector",
       "pos": [
         60,
-        368
+        336
       ],
       "size": [
         320,
-        126
+        112
       ],
       "flags": {},
       "order": 3,
@@ -98,7 +98,7 @@
         "Node name for S&R": "AIS_EL_VoiceSelector"
       },
       "widgets_values": [
-        "Josh",
+        "Josh (male, american)",
         ""
       ]
     },
@@ -107,11 +107,11 @@
       "type": "AIS_Kling_Auth",
       "pos": [
         60,
-        544
+        498
       ],
       "size": [
         320,
-        148
+        136
       ],
       "flags": {},
       "order": 4,
@@ -146,7 +146,7 @@
       ],
       "size": [
         320,
-        484
+        536
       ],
       "flags": {},
       "order": 5,
@@ -176,6 +176,7 @@
         "Node name for S&R": "AIS_Gemini_TextGen"
       },
       "widgets_values": [
+        "",
         "gemini-2.5-flash",
         "",
         "Write a 60-second explainer script about how photosynthesis works, suitable for a friendly science tutor avatar. Keep it engaging and clear.",
@@ -200,7 +201,7 @@
       ],
       "size": [
         320,
-        532
+        572
       ],
       "flags": {},
       "order": 6,
@@ -252,6 +253,9 @@
         "Node name for S&R": "AIS_EL_TTS"
       },
       "widgets_values": [
+        "",
+        "",
+        "",
         "eleven_v3",
         0.5,
         0.75,
@@ -274,11 +278,11 @@
       "type": "LoadImage",
       "pos": [
         460,
-        594
+        646
       ],
       "size": [
         320,
-        122
+        108
       ],
       "flags": {},
       "order": 7,
@@ -317,7 +321,7 @@
       ],
       "size": [
         320,
-        278
+        296
       ],
       "flags": {},
       "order": 8,
@@ -392,7 +396,7 @@
       ],
       "size": [
         320,
-        144
+        132
       ],
       "flags": {},
       "order": 9,
@@ -426,6 +430,7 @@
         "Node name for S&R": "AIS_Kling_FastVideoSaver"
       },
       "widgets_values": [
+        "",
         "avatar_explainer"
       ]
     }
@@ -503,7 +508,7 @@
         35,
         -1,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -513,9 +518,9 @@
       "title": "EL Setup",
       "bounding": [
         35,
-        153,
+        137,
         370,
-        366
+        336
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -525,9 +530,9 @@
       "title": "Kling Setup",
       "bounding": [
         35,
-        483,
+        437,
         370,
-        234
+        222
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -539,7 +544,7 @@
         435,
         -1,
         370,
-        570
+        622
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -551,7 +556,7 @@
         835,
         -1,
         370,
-        618
+        658
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -563,7 +568,7 @@
         435,
         -1,
         1170,
-        742
+        780
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -575,7 +580,7 @@
         1635,
         -1,
         370,
-        230
+        218
       ],
       "color": "#3F789E",
       "font_size": 24,

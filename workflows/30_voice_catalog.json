@@ -1,6 +1,6 @@
 {
-  "last_node_id": 1,
-  "last_link_id": 0,
+  "last_node_id": 2,
+  "last_link_id": 1,
   "nodes": [
     {
       "id": 1,
@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        122
+        108
       ],
       "flags": {},
       "order": 1,
@@ -21,7 +21,9 @@
         {
           "name": "voice_id",
           "type": "STRING",
-          "links": [],
+          "links": [
+            1
+          ],
           "slot_index": 0
         },
         {
@@ -36,11 +38,60 @@
         "Node name for S&R": "AIS_Kling_VoiceSelector"
       },
       "widgets_values": [
-        "girlfriend_4_speech02"
+        "Melody (EN Female)"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ShowText|pysssss",
+      "pos": [
+        460,
+        60
+      ],
+      "size": [
+        320,
+        88
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 1,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "recipe_id": "out",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        ""
       ]
     }
   ],
-  "links": [],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ]
+  ],
   "groups": [
     {
       "title": "Setup",
@@ -48,7 +99,7 @@
         35,
         -1,
         370,
-        208
+        194
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -60,7 +111,7 @@
         435,
         -1,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,

@@ -11,7 +11,7 @@
       ],
       "size": [
         320,
-        148
+        136
       ],
       "flags": {},
       "order": 1,
@@ -42,11 +42,11 @@
       "type": "AIS_Gemini_APIKey",
       "pos": [
         60,
-        258
+        246
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 2,
@@ -75,11 +75,11 @@
       "type": "AIS_EL_APIKey",
       "pos": [
         60,
-        412
+        384
       ],
       "size": [
         320,
-        104
+        88
       ],
       "flags": {},
       "order": 3,
@@ -109,11 +109,11 @@
       "type": "AIS_EL_VoiceSelector",
       "pos": [
         60,
-        566
+        522
       ],
       "size": [
         320,
-        126
+        112
       ],
       "flags": {},
       "order": 4,
@@ -134,7 +134,7 @@
         "Node name for S&R": "AIS_EL_VoiceSelector"
       },
       "widgets_values": [
-        "Charlotte",
+        "(Custom voice_id)",
         ""
       ]
     },
@@ -147,7 +147,7 @@
       ],
       "size": [
         320,
-        140
+        128
       ],
       "flags": {},
       "order": 5,
@@ -198,7 +198,7 @@
       ],
       "size": [
         320,
-        382
+        392
       ],
       "flags": {},
       "order": 6,
@@ -245,7 +245,8 @@
         "Node name for S&R": "AIS_EL_STT"
       },
       "widgets_values": [
-        "scribe_v1",
+        "",
+        "scribe_v2",
         "en",
         false,
         false,
@@ -268,7 +269,7 @@
       ],
       "size": [
         320,
-        484
+        536
       ],
       "flags": {},
       "order": 7,
@@ -306,8 +307,10 @@
         "Node name for S&R": "AIS_Gemini_TextGen"
       },
       "widgets_values": [
+        "",
         "gemini-2.5-flash",
         "",
+        "Translate the following English text to Spanish. Return only the translation:\n\n",
         "You are a professional translator. Output only the translated text, no commentary.",
         0.2,
         0.95,
@@ -329,7 +332,7 @@
       ],
       "size": [
         320,
-        532
+        572
       ],
       "flags": {},
       "order": 8,
@@ -381,13 +384,16 @@
         "Node name for S&R": "AIS_EL_TTS"
       },
       "widgets_values": [
+        "",
+        "",
+        "",
         "eleven_v3",
         0.5,
         0.75,
         0.0,
         1.0,
         true,
-        "es",
+        "Chinese (zh)",
         "auto",
         "mp3_44100_192",
         0,
@@ -407,7 +413,7 @@
       ],
       "size": [
         320,
-        82
+        56
       ],
       "flags": {},
       "order": 9,
@@ -508,7 +514,7 @@
         35,
         -1,
         370,
-        234
+        222
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -518,9 +524,9 @@
       "title": "Gemini Setup",
       "bounding": [
         35,
-        197,
+        185,
         370,
-        190
+        174
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -530,9 +536,9 @@
       "title": "EL Setup",
       "bounding": [
         35,
-        351,
+        323,
         370,
-        366
+        336
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -544,7 +550,7 @@
         435,
         -1,
         370,
-        226
+        214
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -556,7 +562,7 @@
         835,
         -1,
         370,
-        468
+        478
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -568,7 +574,7 @@
         1235,
         -1,
         370,
-        570
+        622
       ],
       "color": "#3F789E",
       "font_size": 24,
@@ -580,7 +586,7 @@
         1635,
         -1,
         770,
-        618
+        658
       ],
       "color": "#3F789E",
       "font_size": 24,
